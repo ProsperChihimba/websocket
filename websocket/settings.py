@@ -74,9 +74,12 @@ WSGI_APPLICATION = 'websocket.wsgi.application'
 ASGI_APPLICATION = 'websocket.asgi.application' 
 
 CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels.layers.InMemoryChannelLayer'
-    }
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("redis-server-name", 6379)],
+        },
+    },
 }
 
 
